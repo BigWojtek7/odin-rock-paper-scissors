@@ -1,5 +1,3 @@
-
-let roundCount = 0;
 let computerScore = 0;
 let userScore = 0;
 
@@ -13,7 +11,6 @@ function getComputerChoice() {
     return "scissors";
   }
 }
-
 
 function singleRound(computerChoice, userChoice) {
   if (computerChoice === userChoice){
