@@ -1,3 +1,8 @@
+
+let roundCount = 0;
+let computerScore = 0;
+let userScore = 0;
+
 function getComputerChoice() {
   randomNumber = Math.floor(Math.random() * 3);
   if (randomNumber === 0){
@@ -39,3 +44,23 @@ function singleRound(computerChoice, userChoice) {
     }
   }
 }
+
+function playGame(){
+  for (let i = 1; i <= 5; i++){
+    let computerChoice = getComputerChoice();
+    let userChoice = prompt("What is your choice").toLowerCase();
+
+    console.log(`Round ${i}: 
+    ${singleRound(computerChoice, userChoice)}
+    The Score is: You: ${userScore} Computer: ${computerScore}`);
+  }
+  if (computerScore < userScore){
+    console.log(`You won after 5 rounds.The Score is: You: ${userScore} Computer: ${computerScore}`);
+  } else if (computerScore > userScore){
+    console.log(`You lost after 5 rounds. The Score is: You: ${userScore} Computer: ${computerScore}`);
+  } else {
+    console.log(`There is a tie after 5 rounds. The Score is: You: ${userScore} Computer: ${computerScore}`);
+  }
+}
+
+playGame()
