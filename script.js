@@ -77,9 +77,11 @@ function playGame(){
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       let userChoice = button.value;
+      
       divRoundText.textContent = `Round ${roundCounter++}: 
       ${singleRound(getComputerChoice(), userChoice)}
       The Score is: You: ${userScore} Computer: ${computerScore}`;
+
       if (computerScore === 5 || userScore === 5){
         buttons.forEach(button => button.disabled = true);
         if (computerScore < userScore){
