@@ -71,23 +71,23 @@ function playGame(){
   const divRoundText = document.createElement('div');
   container.appendChild(divRoundText);
 
-  let count = 1;
+  let roundCounter = 1;
   const buttons = document.querySelectorAll('button');
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
       let userChoice = button.value;
-      divRoundText.textContent = `Round ${count++}: 
+      divRoundText.textContent = `Round ${roundCounter++}: 
       ${singleRound(getComputerChoice(), userChoice)}
       The Score is: You: ${userScore} Computer: ${computerScore}`;
-      if (count > 5){
+      if (computerScore === 5 || userScore === 5){
         buttons.forEach(button => button.disabled = true);
         if (computerScore < userScore){
-          divFinalText.textContent = `You won after 5 rounds.The Final Score is: You: ${userScore} Computer: ${computerScore}`;
+          divFinalText.textContent = `You won. The Final Score is: You: ${userScore} Computer: ${computerScore}`;
         } else if (computerScore > userScore){
-          divFinalText.textContent =`You lost after 5 rounds. The Final Score is: You: ${userScore} Computer: ${computerScore}`;
+          divFinalText.textContent =`You lost. The Final Score is: You: ${userScore} Computer: ${computerScore}`;
         } else {
-          divFinalText.textContent =`There is a tie after 5 rounds. The Final Score is: You: ${userScore} Computer: ${computerScore}`;
+          divFinalText.textContent =`There is a tie. The Final Score is: You: ${userScore} Computer: ${computerScore}`;
         }
       };
     });
