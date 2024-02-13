@@ -43,21 +43,49 @@ function singleRound(computerChoice, userChoice) {
 }
 
 function playGame(){
-  for (let i = 1; i <= 5; i++){
-    let computerChoice = getComputerChoice();
-    let userChoice = prompt("What is your choice").toLowerCase();
+  // for (let i = 1; i <= 5; i++){
+    // let computerChoice = getComputerChoice();
+  //   let userChoice = prompt("What is your choice").toLowerCase();
+    
+    const rockButton = document.createElement('button');
+    rockButton.value = "rock";
+    const paperButton = document.createElement('button');
+    paperButton.value = "paper";
+    const scissorsButton = document.createElement('button');
+    scissorsButton.value = "scissors";
 
-    console.log(`Round ${i}: 
-    ${singleRound(computerChoice, userChoice)}
-    The Score is: You: ${userScore} Computer: ${computerScore}`);
+    const container = document.querySelector('.container');
+
+    
+   
+    container.appendChild(rockButton)
+    container.appendChild(paperButton)
+    container.appendChild(scissorsButton)
+
+    let count = 1;
+    const buttons = document.querySelectorAll('button')
+    // for (let i = 1; i <= 5; i++){
+      buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+          let userChoice = button.value;
+          console.log(`Round ${count++}: 
+          ${singleRound(getComputerChoice(), userChoice)}
+          The Score is: You: ${userScore} Computer: ${computerScore}`);
+          
+          if (count >= 5){
+            buttons.forEach((button) => button.disabled = true);
+            if (computerScore < userScore){
+              console.log(`You won after 5 rounds.The Score is: You: ${userScore} Computer: ${computerScore}`);
+            } else if (computerScore > userScore){
+              console.log(`You lost after 5 rounds. The Score is: You: ${userScore} Computer: ${computerScore}`);
+            } else {
+              console.log(`There is a tie after 5 rounds. The Score is: You: ${userScore} Computer: ${computerScore}`);
+            }
+          
+          };
+        });
+      });
+    
   }
-  if (computerScore < userScore){
-    console.log(`You won after 5 rounds.The Score is: You: ${userScore} Computer: ${computerScore}`);
-  } else if (computerScore > userScore){
-    console.log(`You lost after 5 rounds. The Score is: You: ${userScore} Computer: ${computerScore}`);
-  } else {
-    console.log(`There is a tie after 5 rounds. The Score is: You: ${userScore} Computer: ${computerScore}`);
-  }
-}
 
 playGame()
